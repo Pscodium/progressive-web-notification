@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake App</title>
+</head>
+
+<body>
+
+    <h1>Service Worker Notification</h1>
+
+    <script>
+        const publicVapidKey = "BJthRQ5myDgc7OSXzPCMftGw-n16F7zQBEN7EUD6XxcfTTvrLGWSIG7y_JxiWtVlCFua0S8MTB5rPziBqNx1qIo";
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register(
+                './sw.js',
+                { scope: '/' }
+            );
+
+            Notification.requestPermission().then((permission) => {
+                if (permission === 'granted') {
+                    console.log('Allowed Notifications.')
+                }
+            })
+        }
+    </script>
+    <script src="index.js" type="application/javascript"></script>
+</body>
+</html>
